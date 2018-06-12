@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script src="jquery.js"></script> -->
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="in">
+    <div id="text"></div>
+    <script>
+        var oInput = document.getElementById("in");
+        var oText = document.getElementById("text");
+        oInput.oninput = function(val){
+            // var data = encodeUnicode(val.data);
+            // var newData = decodeUnicode(data);
+            // oText.innerText = newData;
+            oText.innerText = val.data
+        }
+
+         //转码 unicode
+   function encodeUnicode (str) {
+    var res = [];
+    for (var i = 0; i < str.length; i++) {
+      res[i] = ("00" + str.charCodeAt(i).toString(16)).slice(-4);
+    }
+    return "\\u" + res.join("\\u");
+  }
+
+  // 解码
+   function decodeUnicode (str) {
+    str = str.replace(/\\/g, "%");
+    return unescape(str);
+  }
+      
+    </script>
+
+</body>
+</html>
